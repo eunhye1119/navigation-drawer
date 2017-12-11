@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Main Menus -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/menu_attend"
+            android:title="등원관리" />
+        <item
+            android:id="@+id/nav_bus"
+            android:icon="@drawable/menu_bus"
+            android:title="셔틀버스 조회" />
+        <item
+            android:id="@+id/nav_call"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="센터연결" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/menu_manage"
+            android:title="설정" />
+    </group>
+</menu>
+
