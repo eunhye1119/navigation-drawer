@@ -12,7 +12,7 @@
             android:title="셔틀버스 조회" />
         <item
             android:id="@+id/nav_call"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/menu_center"
             android:title="센터연결" />
         <item
             android:id="@+id/nav_manage"
