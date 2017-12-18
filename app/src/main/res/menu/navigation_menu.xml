@@ -3,21 +3,23 @@
     <!-- Main Menus -->
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/menu_attend"
-            android:title="등원관리" />
+            android:id="@+id/nav_attend"
+            android:title="@string/attend" />
         <item
             android:id="@+id/nav_bus"
-            android:icon="@drawable/menu_bus"
-            android:title="셔틀버스 조회" />
+            android:title="@string/bus" />
         <item
             android:id="@+id/nav_call"
-            android:icon="@drawable/menu_center"
-            android:title="센터연결" />
+            android:title="@string/call" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/menu_manage"
-            android:title="설정" />
+            android:id="@+id/nav_setting"
+            android:title="@string/setting" />
     </group>
+    <menu>
+        <item
+            android:id="@+id/nav_notice"
+            android:title="공지사항" />
+    </menu>
+
 </menu>
 

@@ -33,8 +33,12 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header_view"
-        app:menu="@menu/navigation_menu" />
+        android:layout_gravity="start">
 
+        <include
+            layout="@layout/navigation_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
