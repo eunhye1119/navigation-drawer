@@ -5,6 +5,7 @@
     tools:context="com.jhbli.menu_eunhye.fragments.FragmentSettings">
 
     <Button
+        android:id="@+id/btnSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

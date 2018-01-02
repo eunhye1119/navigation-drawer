@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {//implements NavigationView
     private static final int MILLIS_IN_SEC = 1000;
     private long mCurrTimeInMillis = 0;
     private boolean mIsBackKeyPressed = false;
-    static String[] menus = {"등원관리","셔틀버스 조회","센터연결","설정","공지사항"};
+    static String[] menus = {"등원관리", "셔틀버스 조회", "센터연결", "설정", "공지사항"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +44,22 @@ public class MainActivity extends AppCompatActivity {//implements NavigationView
                 .addToBackStack(null)
                 .commit();
 
-        toolbar =(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initNavigationDrawer();
         customAdapter();
     }
 
-    public void initNavigationDrawer(){
+    public void initNavigationDrawer() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //navigationView.setNavigationItemSelectedListener(this);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         //서랍을 열고 닫는 기능을 가진 토글 버튼
         //ActionBarDrawerToggle = new ActionBarDrawerToggle(this, 서랍레이아웃, "열기문자", "닫기문자");
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close){
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
-            public void onDrawerClosed(View v){
+            public void onDrawerClosed(View v) {
                 super.onDrawerClosed(v);
             }
 
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {//implements NavigationView
         toggle.syncState();
     }
 
-    public void customAdapter(){
-        ListView navlist = (ListView)findViewById(R.id.list);
-        NavigationListAdapter adapter = new NavigationListAdapter(this,menus);
+    public void customAdapter() {
+        ListView navlist = (ListView) findViewById(R.id.list);
+        NavigationListAdapter adapter = new NavigationListAdapter(this, menus);
         navlist.setAdapter(adapter);
 
         navlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -133,97 +133,35 @@ public class MainActivity extends AppCompatActivity {//implements NavigationView
 
     @Override
     public void onBackPressed() {
-/*
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-        */
-        if (mIsBackKeyPressed == false){
-            if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+
+        if (mIsBackKeyPressed == false) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
-            }
-            else {
+            } else {
                 mIsBackKeyPressed = true; // 한번 누른 상태로 변경
                 mCurrTimeInMillis = Calendar.getInstance().getTimeInMillis();
                 Toast.makeText(this, "뒤로 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
                 startTimer();
             }
-        }
-        else {
+        } else {
             mIsBackKeyPressed = false; // 백키가 한번 눌린상태면
-            if (Calendar.getInstance().getTimeInMillis() <= (mCurrTimeInMillis + (BACKKEY_TIMEOUT * MILLIS_IN_SEC))){
+            if (Calendar.getInstance().getTimeInMillis() <= (mCurrTimeInMillis + (BACKKEY_TIMEOUT * MILLIS_IN_SEC))) {
                 finish();
             }
         }
     }
-    private void startTimer(){
+
+    private void startTimer() {
         mTimerHandler.sendEmptyMessageDelayed(MSG_TIMER_EXPIRED, BACKKEY_TIMEOUT * MILLIS_IN_SEC);
     }
-    private Handler mTimerHandler = new Handler(){
-        public void handleMessage(Message msg){
-            switch (msg.what){
+
+    private Handler mTimerHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
                 case MSG_TIMER_EXPIRED:
                     mIsBackKeyPressed = false;
-                break;
+                    break;
             }
         }
     };
-
-
-
-/*
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id){
-            case R.id.nav_attend:
-                FragmentAttend fragmentAttend = new FragmentAttend();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragmentAttend)
-                        .addToBackStack(null)
-                        .commit();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.nav_bus:
-                FragmentBus fragmentBus = new FragmentBus();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragmentBus)
-                        .addToBackStack(null)
-                        .commit();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.nav_call:
-                FragmentCall fragmentCall = new FragmentCall();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragmentCall)
-                        .addToBackStack(null)
-                        .commit();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.nav_setting:
-                FragmentSettings fragmentSettings = new FragmentSettings();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragmentSettings)
-                        .addToBackStack(null)
-                        .commit();
-                drawerLayout.closeDrawers();
-                break;
-            case R.id.nav_notice:
-                FragmentNotice fragmentNotice = new FragmentNotice();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragmentNotice)
-                        .addToBackStack(null)
-                        .commit();
-                drawerLayout.closeDrawers();
-                break;
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
 }
