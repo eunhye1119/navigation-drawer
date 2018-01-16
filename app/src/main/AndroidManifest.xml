@@ -10,12 +10,46 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BusInfoActivity"
+            android:theme="@style/AppTheme.Second">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".MapActivity"
+            android:theme="@style/AppTheme.Second">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BusInfoActivity" />
+        </activity>
+        <activity
+            android:name=".NoticeActivity1"
+            android:theme="@style/AppTheme.Second">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".NoticeActivity2"
+            android:theme="@style/AppTheme.Second">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NoticeActivity1" />
         </activity>
     </application>
 

@@ -9,5 +9,6 @@ public class NoticeActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice2);
+        setTitle("주소 수정");
     }
 }
